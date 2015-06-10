@@ -12,6 +12,8 @@ public class TreePlant_Procedural : Plant
 	public TreeSettings currentTreeSettings;
 	public TreeSettings nextTreeSettings;
 
+	Vector3 initialPos;
+
 	public float zOffset = 0;
 
 	public bool isPaused = false;
@@ -89,6 +91,8 @@ public class TreePlant_Procedural : Plant
     	treeStructure.transform.parent = gameObject.transform;
     	treeStructureScript = treeStructure.GetComponent<TreeStructure>();
     	treeStructureScript.loadTreeSettings(currentTreeSettings);
+
+    	initialPos = treeStructure.transform.postion;
     }
 
     public void saveMeshAsset()
@@ -101,25 +105,25 @@ public class TreePlant_Procedural : Plant
     public void updateX(float x)
     {
     	transform.position = new Vector3(
-    		transform.position.x + x,
-    		transform.position.y,
-    		transform.position.z);
+    		initialPos.x + x,
+    		initialPos.y,
+    		initialPos.z);
     }
 
     public void updateY(float y)
     {
     	transform.position = new Vector3(
-    		transform.position.x,
-    		transform.position.y + y,
-    		transform.position.z);
+    		initialPos.x,
+    		initialPos.y + y,
+    		initialPos.z);
     }
 
     public void updateZ(float z)
     {
     	transform.position = new Vector3(
-    		transform.position.x,
-    		transform.position.y,
-    		transform.position.z + z);
+    		initialPos.x,
+    		initialPos.y,
+    		initialPos.z + z);
     }
 
 
