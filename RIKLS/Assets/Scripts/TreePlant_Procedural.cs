@@ -5,11 +5,14 @@ using System.Collections.Generic;
 public class TreePlant_Procedural : Plant
 {
 	public GameObject treeStructure;
+	TreeStructure treeStructureScript;
 	//public GameObject rootStructure;
 	//public List<GameObject> leaves;
 	public TreeSettings treeSettings;
 
 	public float zOffset = 0;
+
+	public bool isPaused = false;
 
 	[System.Serializable]
 	public class TreeSettings {
@@ -43,32 +46,41 @@ public class TreePlant_Procedural : Plant
 		public float branchTrajectoryWeightVariation = 0; // branchShape
 	}
 
-	void Start () {
-
+	void Start () 
+	{
 		treeSettings = new TreeSettings();
-
-		//setRandomValues();
-
-		treeStructure = Instantiate(Resources.Load("TreePlant/TreeStructure"), transform.position + new Vector3(0, 0, zOffset), Quaternion.identity) as GameObject;
-		treeStructure.transform.parent = gameObject.transform;
-		treeStructure.GetComponent<TreeStructure>().loadTreeSettings(treeSettings);
+		newTree();
 	}
 
 	public override void Update()
     {
-        base.Update();
+    	if (!isPaused)
+    	{
+    		base.Update();
 
-        //propogate maturity
-
-        treeStructure.GetComponent<TreeStructure>().maturity = maturity;
-        treeStructure.GetComponent<TreeStructure>().isMaturing = isMaturing;
+    		if (treeStructureScript != null)
+    		{
+    			treeStructureScript.maturity = maturity;
+    			treeStructureScript.isMaturing = isMaturing;
+    		}
+    	}
     }
 
-	private void setRandomValues()
+
+    public void pauseTree(bool p)
     {
-    	treeSettings.treeMaxHeight = Random.Range(1f, 4f);
-    	treeSettings.treeDirectionWeight = Random.Range(0.5f, 1f);
+    	isPaused = p;
     }
+
+    public void newTree()
+    {
+    	maturity = 0;
+    	treeStructure = Instantiate(Resources.Load("TreePlant/TreeStructure"), transform.position + new Vector3(0, 0, zOffset), Quaternion.identity) as GameObject;
+    	treeStructure.transform.parent = gameObject.transform;
+    	treeStructureScript = treeStructure.GetComponent<TreeStructure>();
+    	treeStructureScript.loadTreeSettings(treeSettings);
+    }
+
 
     public void setTreeTrajectory(Vector3 traj){treeSettings.treeTrajectory = traj;}
     public void setTreeDirectionWeight(float w){treeSettings.treeDirectionWeight = w;}
@@ -89,6 +101,5 @@ public class TreePlant_Procedural : Plant
     public void setBranchTrajectoryNoise(float t){treeSettings.branchTrajectoryNoise = t;}
     public void setBranchTrajectoryWeight(float w){treeSettings.branchTrajectoryWeight = w;}
     public void setBranchTrajectoryWeightVariation(float v){treeSettings.branchTrajectoryWeightVariation = v;}
-
 
 }
