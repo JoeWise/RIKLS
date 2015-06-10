@@ -193,7 +193,7 @@ public class Branch
 		// update vine skeleton structure (such as adding a new segment)
 		if (getLength() < lengthGoal)
 		{
-			if (currentTreeMaturity < 0.5f || parent != null)
+			if (currentTreeMaturity < treeSettings.trunkPercent || parent != null || treeSettings.trunkExtend == false)
 			{
 				grow();
 			}
