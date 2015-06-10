@@ -9,7 +9,8 @@ public class TreePlant_Procedural : Plant
 	TreeStructure treeStructureScript;
 	//public GameObject rootStructure;
 	//public List<GameObject> leaves;
-	public TreeSettings treeSettings;
+	public TreeSettings currentTreeSettings;
+	public TreeSettings nextTreeSettings;
 
 	public float zOffset = 0;
 
@@ -49,7 +50,8 @@ public class TreePlant_Procedural : Plant
 
 	void Start () 
 	{
-		treeSettings = new TreeSettings();
+		currentTreeSettings = new TreeSettings();
+		nextTreeSettings = new TreeSettings();
 		newTree();
 	}
 
@@ -78,12 +80,15 @@ public class TreePlant_Procedural : Plant
 
     public void newTree()
     {
+
     	maturity = 0;
+    	currentTreeSettings = nextTreeSettings;
+    	nextTreeSettings = new TreeSettings();
     	Destroy(treeStructure);
     	treeStructure = Instantiate(Resources.Load("TreePlant/TreeStructure"), transform.position + new Vector3(0, 0, zOffset), Quaternion.identity) as GameObject;
     	treeStructure.transform.parent = gameObject.transform;
     	treeStructureScript = treeStructure.GetComponent<TreeStructure>();
-    	treeStructureScript.loadTreeSettings(treeSettings);
+    	treeStructureScript.loadTreeSettings(currentTreeSettings);
     }
 
     public void saveMeshAsset()
@@ -94,24 +99,24 @@ public class TreePlant_Procedural : Plant
     }
 
 
-    public void setTreeTrajectory(Vector3 traj){treeSettings.treeTrajectory = traj;}
-    public void setTreeDirectionWeight(float w){treeSettings.treeDirectionWeight = w;}
-    public void setTreeMaxHeight(float h){treeSettings.treeMaxHeight = h;}
-    public void setTreeMaxDepth(float d){treeSettings.treeMaxDepth = (int) d;}
-    public void setTreeMaxWidth(float w){treeSettings.treeMaxWidth = w;}
-    public void setTrunkExtend(bool e){treeSettings.trunkExtend = e;}
-    public void setTrunkPercent(float p){treeSettings.trunkPercent = p;}
-    public void setMaxNodeChanceToBranch(float c){treeSettings.maxNodeChanceToBranch = c;}
-    public void setMaxNumNodeBranches(float n){treeSettings.maxNumNodeBranches = (int) n;}
-    public void setMinBranchAngle(float a){treeSettings.minBranchAngle = a;}
-    public void setMaxBranchAngle(float a){treeSettings.maxBranchAngle = a;}
-    public void setBranchResolution(float r){treeSettings.branchResolution = (int) r;}
-    public void setBranchNodeMaxAngle(float a){treeSettings.branchNodeMaxAngle = a;}
-    public void setBranchSegLength(float l){treeSettings.branchSegLength = l;}
-    public void setBranchMinWidth(float w){treeSettings.branchMinWidth = w;}
-    public void setBranchMaxWidth(float w){treeSettings.branchMaxWidth = w;}
-    public void setBranchTrajectoryNoise(float t){treeSettings.branchTrajectoryNoise = t;}
-    public void setBranchTrajectoryWeight(float w){treeSettings.branchTrajectoryWeight = w;}
-    public void setBranchTrajectoryWeightVariation(float v){treeSettings.branchTrajectoryWeightVariation = v;}
+    public void setTreeTrajectory(Vector3 traj){nextTreeSettings.treeTrajectory = traj;}
+    public void setTreeDirectionWeight(float w){nextTreeSettings.treeDirectionWeight = w;}
+    public void setTreeMaxHeight(float h){nextTreeSettings.treeMaxHeight = h;}
+    public void setTreeMaxDepth(float d){nextTreeSettings.treeMaxDepth = (int) d;}
+    public void setTreeMaxWidth(float w){nextTreeSettings.treeMaxWidth = w;}
+    public void setTrunkExtend(bool e){nextTreeSettings.trunkExtend = e;}
+    public void setTrunkPercent(float p){nextTreeSettings.trunkPercent = p;}
+    public void setMaxNodeChanceToBranch(float c){nextTreeSettings.maxNodeChanceToBranch = c;}
+    public void setMaxNumNodeBranches(float n){nextTreeSettings.maxNumNodeBranches = (int) n;}
+    public void setMinBranchAngle(float a){nextTreeSettings.minBranchAngle = a;}
+    public void setMaxBranchAngle(float a){nextTreeSettings.maxBranchAngle = a;}
+    public void setBranchResolution(float r){nextTreeSettings.branchResolution = (int) r;}
+    public void setBranchNodeMaxAngle(float a){nextTreeSettings.branchNodeMaxAngle = a;}
+    public void setBranchSegLength(float l){nextTreeSettings.branchSegLength = l;}
+    public void setBranchMinWidth(float w){nextTreeSettings.branchMinWidth = w;}
+    public void setBranchMaxWidth(float w){nextTreeSettings.branchMaxWidth = w;}
+    public void setBranchTrajectoryNoise(float t){nextTreeSettings.branchTrajectoryNoise = t;}
+    public void setBranchTrajectoryWeight(float w){nextTreeSettings.branchTrajectoryWeight = w;}
+    public void setBranchTrajectoryWeightVariation(float v){nextTreeSettings.branchTrajectoryWeightVariation = v;}
 
 }
