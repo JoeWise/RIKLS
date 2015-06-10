@@ -68,9 +68,12 @@ public class TreePlant_Procedural : Plant
     }
 
 
-    public void pauseTree(bool p)
+    public void pauseTree()
     {
-    	isPaused = p;
+        if (isPaused)
+            isPaused = false;
+        else
+            isPaused = true;
     }
 
     public void newTree()
