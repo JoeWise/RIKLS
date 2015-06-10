@@ -15,40 +15,32 @@ public class TreePlant_Procedural : Plant
 	public class TreeSettings {
 		// how many faces does each vine segment have? 4 = square, 6 = hexagonal, etc.
 
-		public Vector3 treeTrajectory = Vector3.up;
+		public Vector3 treeTrajectory = Vector3.up; // treeShape
 		// random
 		public float treeDirectionWeight = 0.8f;
 		// random
-		public float treeMaxHeight = 10f;
-		public int treeMaxDepth = 3;
-		public float treeMaxWidth = 0.3f;
-		// random
-		public float maxNodeChanceToBranch = 0.35f;
-		// random
-		public int maxNumNodeBranches = 3;
-		// random
-		public float minBranchAngle = 15f;
-		public float maxBranchAngle = 40f;
+		public float treeMaxHeight = 10f; // treeShape
+		public int treeMaxDepth = 3; // treeShape
+		public float treeMaxWidth = 0.3f; // treeShape
 
-		public float maxPlatformBranchLength = 2f;
+		public bool trunkExtend = true; // treeShape
+		public float trunkPercent = 0.5f; // treeShape
+		// random
+		public float maxNodeChanceToBranch = 0.35f; // treeShape
+		// random
+		public int maxNumNodeBranches = 3; // treeShape
+		// random
+		public float minBranchAngle = 15f; // branchShape
+		public float maxBranchAngle = 40f; // branchShape
 
-		public int branchResolution = 5;
-		public float branchNodeMaxAngle = 40f;
-		public float branchSegLength = 0.3f;
-		public float branchMaxLength = 1f;
-		public float branchGrowthRate = 0.1f;
-		public float branchMinWidth = 0.00f;
-		public float branchMaxWidth = 0.04f;
-		public float branchCurviness = 10f;
-		public float branchTrajectoryNoise = 45f;
-		public float branchTrajectoryWeight = 0.5f;
-		public float branchTrajectoryWeightVariation = 0;
-
-		public int platformResolution = 5;
-		public int platformMaxDepth = 2;
-		public float platformMaxLength = 2f;
-		public float platformMaxChildLength = .5f;
-		public float platformMaxThickness = 0.15f;
+		public int branchResolution = 5; // general
+		public float branchNodeMaxAngle = 40f; // branchShape
+		public float branchSegLength = 0.3f; // branchShape
+		public float branchMinWidth = 0.00f; // branchShape :: unimportant?
+		public float branchMaxWidth = 0.04f; // branchShape
+		public float branchTrajectoryNoise = 45f; // branchShape
+		public float branchTrajectoryWeight = 0.5f; // branchShape
+		public float branchTrajectoryWeightVariation = 0; // branchShape
 	}
 
 	void Start () {
