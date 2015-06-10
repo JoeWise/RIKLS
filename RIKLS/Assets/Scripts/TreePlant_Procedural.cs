@@ -92,7 +92,7 @@ public class TreePlant_Procedural : Plant
     	treeStructureScript = treeStructure.GetComponent<TreeStructure>();
     	treeStructureScript.loadTreeSettings(currentTreeSettings);
 
-    	initialPos = treeStructure.transform.postion;
+    	initialPos = treeStructure.transform.position;
     }
 
     public void saveMeshAsset()
