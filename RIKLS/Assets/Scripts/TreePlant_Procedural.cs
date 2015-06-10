@@ -62,8 +62,6 @@ public class TreePlant_Procedural : Plant
 
         treeStructure.GetComponent<TreeStructure>().maturity = maturity;
         treeStructure.GetComponent<TreeStructure>().isMaturing = isMaturing;
-        
-
     }
 
 	private void setRandomValues()
@@ -71,4 +69,25 @@ public class TreePlant_Procedural : Plant
     	treeSettings.treeMaxHeight = Random.Range(1f, 4f);
     	treeSettings.treeDirectionWeight = Random.Range(0.5f, 1f);
     }
+
+    public void setTreeTrajectory(Vector3 traj){treeSettings.treeTrajectory = traj;}
+    public void setTreeDirectionWeight(float w){treeSettings.treeDirectionWeight = w;}
+    public void setTreeMaxHeight(float h){treeSettings.treeMaxHeight = h;}
+    public void setTreeMaxDepth(float d){treeSettings.treeMaxDepth = (int) d;}
+    public void setTrunkExtend(bool e){treeSettings.trunkExtend = e;}
+    public void setTrunkPercent(float p){treeSettings.trunkPercent = p;}
+    public void setMaxNodeChanceToBranch(float c){treeSettings.maxNodeChanceToBranch = c;}
+    public void setMaxNumNodeBranches(float n){treeSettings.maxNumNodeBranches = (int) n;}
+    public void setMinBranchAngle(float a){treeSettings.minBranchAngle = a;}
+    public void setMaxBranchAngle(float a){treeSettings.maxBranchAngle = a;}
+    public void setBranchResolution(float r){treeSettings.branchResolution = (int) r;}
+    public void setBranchNodeMaxAngle(float a){treeSettings.branchNodeMaxAngle = a;}
+    public void setBranchSegLength(float l){treeSettings.branchSegLength = l;}
+    public void setBranchMinWidth(float w){treeSettings.branchMinWidth = w;}
+    public void setBranchMaxWidth(float w){treeSettings.branchMaxWidth = w;}
+    public void setBranchTrajectoryNoise(float t){treeSettings.branchTrajectoryNoise = t;}
+    public void setBranchTrajectoryWeight(float w){treeSettings.branchTrajectoryWeight = w;}
+    public void setBranchTrajectoryWeightVariation(float v){treeSettings.branchTrajectoryWeightVariation = v;}
+
+
 }
