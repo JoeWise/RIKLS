@@ -97,9 +97,11 @@ public class TreePlant_Procedural : Plant
 
     public void saveMeshAsset()
     {
+    	
     	Mesh m1 = treeStructure.GetComponent<MeshFilter>().mesh;
     	AssetDatabase.CreateAsset(m1, "Assets/" + "RIKLS1" + ".asset"); // saves to "assets/"
     	AssetDatabase.SaveAssets();
+
     }
 
     public void updateX(float x)
