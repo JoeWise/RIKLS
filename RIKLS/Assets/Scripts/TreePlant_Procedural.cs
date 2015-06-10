@@ -74,6 +74,7 @@ public class TreePlant_Procedural : Plant
     public void setTreeDirectionWeight(float w){treeSettings.treeDirectionWeight = w;}
     public void setTreeMaxHeight(float h){treeSettings.treeMaxHeight = h;}
     public void setTreeMaxDepth(float d){treeSettings.treeMaxDepth = (int) d;}
+    public void setTreeMaxWidth(float w){treeSettings.treeMaxWidth = w;}
     public void setTrunkExtend(bool e){treeSettings.trunkExtend = e;}
     public void setTrunkPercent(float p){treeSettings.trunkPercent = p;}
     public void setMaxNodeChanceToBranch(float c){treeSettings.maxNodeChanceToBranch = c;}
