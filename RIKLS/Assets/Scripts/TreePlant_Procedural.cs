@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -78,10 +79,18 @@ public class TreePlant_Procedural : Plant
     public void newTree()
     {
     	maturity = 0;
+    	Destroy(treeStructure);
     	treeStructure = Instantiate(Resources.Load("TreePlant/TreeStructure"), transform.position + new Vector3(0, 0, zOffset), Quaternion.identity) as GameObject;
     	treeStructure.transform.parent = gameObject.transform;
     	treeStructureScript = treeStructure.GetComponent<TreeStructure>();
     	treeStructureScript.loadTreeSettings(treeSettings);
+    }
+
+    public void saveMeshAsset()
+    {
+    	Mesh m1 = treeStructure.GetComponent<MeshFilter>().mesh;
+    	AssetDatabase.CreateAsset(m1, "Assets/" + "RIKLS1" + ".asset"); // saves to "assets/"
+    	AssetDatabase.SaveAssets();
     }
 
 
