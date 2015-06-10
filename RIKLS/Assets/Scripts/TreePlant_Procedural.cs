@@ -98,6 +98,30 @@ public class TreePlant_Procedural : Plant
     	AssetDatabase.SaveAssets();
     }
 
+    public void updateX(float x)
+    {
+    	transform.position = new Vector3(
+    		transform.position.x + x,
+    		transform.position.y,
+    		transform.position.z);
+    }
+
+    public void updateY(float y)
+    {
+    	transform.position = new Vector3(
+    		transform.position.x,
+    		transform.position.y + y,
+    		transform.position.z);
+    }
+
+    public void updateZ(float z)
+    {
+    	transform.position = new Vector3(
+    		transform.position.x,
+    		transform.position.y,
+    		transform.position.z + z);
+    }
+
 
     public void setTreeTrajectory(Vector3 traj){nextTreeSettings.treeTrajectory = traj;}
     public void setTreeDirectionWeight(float w){nextTreeSettings.treeDirectionWeight = w;}
